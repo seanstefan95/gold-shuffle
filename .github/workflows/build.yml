@@ -38,6 +38,16 @@ jobs:
           gradle --no-daemon assembleRelease
       - name: Name the APK
         run: cp app/build/outputs/apk/release/app-release.apk GoldShuffle-${{ github.run_number }}.apk
+      - name: Build the friend kit zip
+        run: |
+          N=${{ github.run_number }}
+          K="GoldShuffle-$N"
+          mkdir -p "$K/Android" "$K/PC"
+          cp GoldShuffle-$N.apk "$K/Android/"
+          cp pc/goldShuffle.js kit/install-gold-shuffle.ps1 "$K/PC/"
+          cp docs/Gold-Shuffle-setup-guide.pdf kit/START-HERE.txt kit/Spotify-dashboard-values.txt "$K/"
+          cp LICENSE "$K/LICENSE.txt"; cp NOTICE "$K/NOTICE.txt"
+          zip -r -q "GoldShuffle-$N-kit.zip" "$K"
       - uses: actions/upload-artifact@v4
         with:
           name: GoldShuffle-${{ github.run_number }}
@@ -47,9 +57,11 @@ jobs:
           tag_name: build-${{ github.run_number }}
           name: Gold Shuffle build ${{ github.run_number }}
           files: |
+            GoldShuffle-${{ github.run_number }}-kit.zip
             GoldShuffle-${{ github.run_number }}.apk
             pc/goldShuffle.js
           body: |
+            **Everything in one download:** `GoldShuffle-${{ github.run_number }}-kit.zip` (app, PC add-on, setup guide). Open `START-HERE.txt` first.
             **Android:** install `GoldShuffle-${{ github.run_number }}.apk` on your phone.
             **PC:** put `goldShuffle.js` in Spicetify's Extensions folder, then run `spicetify apply`.
             Setup steps are in the README.

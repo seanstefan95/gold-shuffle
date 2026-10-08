@@ -1,0 +1,49 @@
+GOLD SHUFFLE - START HERE
+=========================
+
+A true-random shuffle for Spotify. Every song in a playlist gets a number, the numbers
+are shuffled (Fisher-Yates), so every order is equally likely and every song gets its turn.
+
+You need Spotify Premium.
+
+WHAT'S IN THIS FOLDER
+  Gold-Shuffle-setup-guide.pdf   Full walkthrough with screenshots. Read this if you get stuck.
+  Android\GoldShuffle-<n>.apk    The phone app.
+  PC\goldShuffle.js              The add-on for the Spotify desktop app.
+  PC\install-gold-shuffle.ps1    Optional one-click PC installer (Windows).
+  Spotify-dashboard-values.txt   The values to copy into Spotify's developer dashboard.
+  LICENSE.txt, NOTICE.txt        Licence info.
+
+ANDROID (about 5 minutes)
+  1. Copy the .apk to your phone (or open it from wherever it was sent) and install it.
+     Allow "install unknown apps" when Android asks.
+  2. Open Gold Shuffle and follow the setup screen. It has Copy buttons for every value.
+     Short version:
+       - Go to developer.spotify.com/dashboard, log in, Create app.
+       - Add both redirect URIs, tick Web API and Android, add the Android package
+         (press the purple Add button!), then Save.
+       - Copy the Client ID from your app's Settings into Gold Shuffle.
+  3. Sign in, then approve the second Spotify prompt.
+  Sharing a Client ID: up to 5 Spotify accounts per developer app. Add friends under
+  User Management on the dashboard, or have each person make their own app.
+
+PC (about 5 minutes)
+  Easy way (Windows): right-click PC\install-gold-shuffle.ps1 -> "Run with PowerShell".
+  (If Windows blocks it or it shows an error, use the manual way below.)
+  Manual way:
+    1. Open PowerShell (Windows key + R, type powershell, OK).
+    2. Install Spicetify:
+         iwr -useb https://raw.githubusercontent.com/spicetify/cli/main/install.ps1 | iex
+       Say no to the Marketplace. Close and reopen PowerShell.
+    3. spicetify config-dir   -> put goldShuffle.js in the Extensions folder that opens
+    4. spicetify config extensions goldShuffle.js
+    5. spicetify backup apply
+  Spotify restarts and shows "Gold Shuffle ready". Click shuffle: it turns gold.
+  Click again to cycle: gold -> shuffle -> smart shuffle -> off.
+  After a Spotify update removes it, run: spicetify apply
+
+NOTES
+  - Not affiliated with Spotify. The PC add-on modifies the Spotify desktop app, which
+    Spotify's terms don't allow; use at your own risk. The Android app uses Spotify's
+    official Web API and Android SDK.
+  - Source code: github.com/seanstefan95/gold-shuffle

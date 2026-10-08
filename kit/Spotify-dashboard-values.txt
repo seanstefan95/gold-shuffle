@@ -1,0 +1,14 @@
+SPOTIFY DEVELOPER DASHBOARD VALUES
+(developer.spotify.com/dashboard -> your app -> Settings -> Edit)
+
+Redirect URIs (add both):
+goldshuffle://callback
+goldshuffle://sdkauth
+
+Which API/SDKs: tick  Web API  and  Android
+
+Android packages (fill both boxes, press the purple Add button, then Save):
+Package name:      com.goldshuffle
+SHA1 fingerprint:  BF:20:E4:53:89:70:B5:FF:6B:D2:26:1E:09:C0:CD:E6:02:28:45:46
+
+Then copy the Client ID (NOT the Client Secret) into the Gold Shuffle app.

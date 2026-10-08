@@ -13,6 +13,9 @@ Fisher–Yates shuffle, so every order is equally likely and every song gets its
 
 Requires **Spotify Premium**.
 
+**Easiest:** download `GoldShuffle-<build>-kit.zip` from the latest release. It has the app,
+the PC add-on, a one-click PC installer, and the full setup guide with screenshots.
+
 ---
 
 ## Android
