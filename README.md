@@ -37,6 +37,10 @@ through this and has copy buttons for every value:
    purple **Add** button, then **Save** at the bottom.
 4. Open your app's **Settings**, copy the **Client ID** (not the secret) and paste it into Gold Shuffle.
 
+**Sharing one Client ID:** a developer app allows up to 5 Spotify accounts. Add friends
+under **User Management** on your dashboard and give them your Client ID, or have each
+person make their own app (no shared limit).
+
 ### 3. Sign in
 Tap **Sign in with Spotify**, then approve the second Spotify prompt that connects
 Gold Shuffle to the Spotify app.
@@ -52,13 +56,14 @@ Gold Shuffle to the Spotify app.
 
 ## PC (Spotify desktop, via Spicetify)
 
-1. Install [Spicetify](https://spicetify.app/docs/getting-started) (the Marketplace is not needed).
-2. Run `spicetify config-dir` and put `goldShuffle.js` (from the latest release, or `pc/`
+1. Install [Spicetify](https://spicetify.app/docs/getting-started) (the Marketplace is not needed),
+   or on Windows run `PC/install-gold-shuffle.ps1` from the kit zip, which does steps 1–4 for you.
+2. Run `spicetify config-dir` (in PowerShell on Windows: Windows key + R → `powershell`) and put `goldShuffle.js` (from the latest release, or `pc/`
    in this repo) into the `Extensions` folder it shows.
 3. Run:
    ```
    spicetify config extensions goldShuffle.js
-   spicetify apply
+   spicetify backup apply
    ```
 4. Spotify restarts and shows *Gold Shuffle ready*. Click the shuffle button: it turns gold.
 
