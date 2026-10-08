@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut
+        android:shortcutId="shuffle_now"
+        android:enabled="true"
+        android:icon="@drawable/ic_shuffle"
+        android:shortcutShortLabel="@string/shortcut_short"
+        android:shortcutLongLabel="@string/shortcut_long">
+        <intent
+            android:action="com.goldshuffle.SHUFFLE_NOW"
+            android:targetPackage="com.goldshuffle"
+            android:targetClass="com.goldshuffle.MainActivity" />
+    </shortcut>
+</shortcuts>

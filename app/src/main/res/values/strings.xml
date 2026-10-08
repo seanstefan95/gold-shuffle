@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="shortcut_short">Gold shuffle now</string>
+    <string name="shortcut_long">Gold shuffle what\'s playing</string>
+</resources>

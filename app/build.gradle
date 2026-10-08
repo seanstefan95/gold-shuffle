@@ -1,0 +1,50 @@
+plugins {
+    id 'com.android.application'
+}
+
+def buildNum = Integer.parseInt(System.getenv('GITHUB_RUN_NUMBER') ?: '1')
+
+android {
+    namespace 'com.goldshuffle'
+    compileSdk 35
+
+    defaultConfig {
+        applicationId 'com.goldshuffle'
+        minSdk 26
+        targetSdk 35
+        versionCode buildNum
+        versionName "1.0.${buildNum}"
+        // Redirect for Spotify's on-phone toolkit sign-in (separate from the main goldshuffle://callback)
+        manifestPlaceholders = [redirectSchemeName: "goldshuffle", redirectHostName: "sdkauth", redirectPathPattern: ".*"]
+    }
+
+    // Release key comes from GitHub secrets (KEYSTORE_B64 / KEYSTORE_PASSWORD), never from the repo.
+    // Same key every build, so new versions install over old ones.
+    signingConfigs {
+        stable {
+            storeFile file(System.getenv('KEYSTORE_FILE') ?: 'missing.jks')
+            storePassword System.getenv('KEYSTORE_PASSWORD') ?: ''
+            keyAlias 'goldshuffle'
+            keyPassword System.getenv('KEYSTORE_PASSWORD') ?: ''
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.stable
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
+
+dependencies {
+    // Spotify's on-phone toolkit (App Remote SDK 0.8.0, Apache 2.0) and its JSON library
+    implementation files('libs/spotify-app-remote-release-0.8.0.aar')
+    implementation 'com.google.code.gson:gson:2.10.1'
+    implementation 'com.spotify.android:auth:2.1.0'
+}

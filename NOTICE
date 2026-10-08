@@ -1,0 +1,3 @@
+Gold Shuffle includes the Spotify App Remote SDK (app/libs/spotify-app-remote-release-0.8.0.aar)
+and uses the Spotify Android Auth library, both Copyright (c) Spotify AB, licensed under the
+Apache License, Version 2.0: https://www.apache.org/licenses/LICENSE-2.0
